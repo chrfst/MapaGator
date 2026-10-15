@@ -6,3 +6,4 @@
 //Read newly connected vertices adjacency list
 //Skip already connected vertices
 //Repeat process
+class Prim {};
