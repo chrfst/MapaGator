@@ -11,4 +11,9 @@ add_executable(MapaGator
         MinHeap.h
         Prim.h
         UnionFind.h
-        Graph.h)
+        Graph.h
+        Graph.cpp
+        MinHeap.cpp
+        Prim.cpp
+        UnionFind.cpp
+        Kruskal.cpp)

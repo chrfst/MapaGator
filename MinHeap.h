@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 class MinHeap {
 private:
     std::vector<Edge> heap;
@@ -7,6 +8,8 @@ private:
     int right(int index) const;
 public:
     MinHeap();
+    void heapifyUp(int index);
+    void heapifyDown(int index);
     bool empty() const;
     int size() const;
     void insert(const Edge& edge);
