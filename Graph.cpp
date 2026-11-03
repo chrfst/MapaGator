@@ -19,7 +19,7 @@ void Graph::readFile(const std::string& filepath) {
         adjacencyList[source].push_back(edge);
     }
 }
-int Graph::getNumVertices() {
+int Graph::getNumVertices() const {
 
 }
 const std::vector<Edge>& Graph::getNeighbors (int vertex) const {

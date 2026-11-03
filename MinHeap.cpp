@@ -1,11 +1,12 @@
 #include "MinHeap.h"
-int minHeap::parent(int index) {
+#include <stdexcept>
+int minHeap::parent(int index) const{
     return ((index-1)/2);
 }
-int minHeap::left(int index) {
+int minHeap::left(int index) const{
     return ((2*index) + 1);
 }
-int minHeap::right(int index) {
+int minHeap::right(int index) const{
     return ((2*index) + 2);
 }
 bool minHeap::empty() const {
@@ -19,8 +20,7 @@ int minHeap::size() const {
     return heap.size();
 }
 void minHeap::heapifyUp(int index) {
-    while (index > 0 && heap[parent(index) < heap[index]) {
-        int temp = heap[parent(index)];
+    while (index > 0 && heap[parent(index)].cost > heap[index].cost) {
         std::swap(heap[parent(index)], heap[index]);
         index = parent(index);
     }
@@ -32,10 +32,10 @@ void minHeap::heapifyDown(int index) {
         int leftChild = left(index);
         int rightChild = right(index);
         int smallest = index;
-        if (leftChild < size && heap[leftChild] < heap[smallest]) {
+        if (leftChild < size && heap[leftChild].cost < heap[smallest].cost) {
             smallest = leftChild;
         }
-        if (rightChild < size && heap[rightChild] < heap[smallest]) {
+        if (rightChild < size && heap[rightChild].cost < heap[smallest].cost) {
             smallest = rightChild;
         }
         if (smallest != index) {
@@ -47,7 +47,7 @@ void minHeap::heapifyDown(int index) {
     }
 }
 void minHeap::insert(const Edge& edge) {
-    heap.push_back(edge)
+    heap.push_back(edge);
     heapifyUp(heap.size() - 1);
 }
 Edge minHeap::extractMin() {
@@ -55,7 +55,9 @@ Edge minHeap::extractMin() {
         throw std::runtime_error("MinHeap is empty");
     }
     if (heap.size() == 1) {
-        return heap.front();
+        Edge temp = heap.front();
+        heap.pop_back();
+        return temp;
     }
     Edge save = heap[0];
     heap[0] = heap.back();
