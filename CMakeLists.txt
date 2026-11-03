@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 4.1)
-project(MapaGator C)
+project(MapaGator LANGUAGES CXX)
 
 set(CMAKE_C_STANDARD 11)
 
@@ -16,4 +16,5 @@ add_executable(MapaGator
         MinHeap.cpp
         Prim.cpp
         UnionFind.cpp
-        Kruskal.cpp)
+        Kruskal.cpp
+        Graph.cpp)
