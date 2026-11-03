@@ -13,7 +13,6 @@ private:
 public:
     Graph(int numVertices);
 	void readFile(const std::string& filepath);
-    void addEdge(int source, int destination, double cost);
     const std::vector<Edge>& getNeighbors (int vertex) const;
     const std::vector<Edge>& getEdges() const;
     int getNumVertices() const;

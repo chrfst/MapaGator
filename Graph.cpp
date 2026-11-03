@@ -14,14 +14,12 @@ void Graph::readFile(const std::string& filepath) {
     int destination;
     double cost;
     while (file >> source >> destination >> cost) {
-        edges.push_back(Edge(source, destination, cost));
+        Edge edge(source, destination, cost);
+        edges.push_back(edge);
+        adjacencyList[source].push_back(edge);
     }
-    //adjacency list construction
 }
 int Graph::getNumVertices() {
-
-}
-void Graph::addEdge(int source, int destination, double weight) {
 
 }
 const std::vector<Edge>& Graph::getNeighbors (int vertex) const {
