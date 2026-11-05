@@ -1,11 +1,14 @@
 #pragma once
 #include <vector>
-struct UnionFind {
+
+class UnionFind {
 private:
     std::vector<int> parent;
     std::vector<int> rank;
 public:
-    UnionFind(int numElements);
+    explicit UnionFind(int numElements);
     int find(int element);
-    bool unit(int first, int second);
+    bool unite(int first, int second);
+    bool unit(int first, int second) { return unite(first, second); }
+    bool connected(int first, int second) { return find(first) == find(second); }
 };

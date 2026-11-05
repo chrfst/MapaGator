@@ -1,5 +1,7 @@
 #include "Prim.h"
 #include "MinHeap.h"
+#include "Graph.h"
+#include "MSTResult.h"
 #include <chrono>
 #include <stdexcept>
 #include <vector>
