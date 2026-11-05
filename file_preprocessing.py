@@ -2,7 +2,7 @@ import osmnx as ox
 from pyrosm import OSM
 import pandas as pd
 #pyrosm is used to take in our pbf
-pbf_path = "florida-261019.osm.pbf"
+pbf_path = "florida-261102.osm.pbf"  #Will be different based on the data you download from Geofabrik
 osm = OSM(pbf_path)
 # 2. Extract only driving roads
 nodes, edges = osm.get_network(nodes=True, network_type="driving")
