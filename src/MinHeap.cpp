@@ -1,67 +1,56 @@
 #include "MinHeap.h"
-#include <stdexcept>
-int minHeap::parent(int index) const{
-    return ((index-1)/2);
-}
-int minHeap::left(int index) const{
-    return ((2*index) + 1);
-}
-int minHeap::right(int index) const{
-    return ((2*index) + 2);
-}
-bool minHeap::empty() const {
-    if (heap.size() == 0) {
-        return true;
-    }else {
-        return false;
-    }
-}
-int minHeap::size() const {
-    return heap.size();
-}
-void minHeap::heapifyUp(int index) {
-    while (index > 0 && heap[parent(index)].cost > heap[index].cost) {
-        std::swap(heap[parent(index)], heap[index]);
-        index = parent(index);
-    }
-}
-void minHeap::heapifyDown(int index) {
-    int size = heap.size();
 
+#include <stdexcept>
+#include <utility>
+
+bool MinHeap::comesBefore(const Edge& first, const Edge& second) {
+    if (first.cost != second.cost) return first.cost < second.cost; //lower cost first
+    if (first.source != second.source) return first.source < second.source; //tie break
+    return first.destination < second.destination; //tie break 2
+}
+
+bool MinHeap::empty() const { return heap.empty(); }
+int MinHeap::size() const { return static_cast<int>(heap.size()); }
+
+void MinHeap::siftUp(int index) {
+    while (index > 0) {
+        int parent = (index - 1) / 2;
+        if (!comesBefore(heap[index], heap[parent])) break; //already in order
+        std::swap(heap[index], heap[parent]);
+        index = parent;
+    }
+}
+
+void MinHeap::siftDown(int index) {
     while (true) {
-        int leftChild = left(index);
-        int rightChild = right(index);
         int smallest = index;
-        if (leftChild < size && heap[leftChild].cost < heap[smallest].cost) {
-            smallest = leftChild;
+        int left = 2 * index + 1;
+        int right = left + 1;
+        //find the smallest of parent and both children
+        if (left < size() && comesBefore(heap[left], heap[smallest])) {
+            smallest = left;
         }
-        if (rightChild < size && heap[rightChild].cost < heap[smallest].cost) {
-            smallest = rightChild;
+        if (right < size() && comesBefore(heap[right], heap[smallest])) {
+            smallest = right;
         }
-        if (smallest != index) {
-            std::swap(heap[index], heap[smallest]);
-            index = smallest;
-        } else {
-            break;
-        }
+        if (smallest == index) break; //already in order
+
+        std::swap(heap[index], heap[smallest]);
+        index = smallest;
     }
 }
-void minHeap::insert(const Edge& edge) {
+
+void MinHeap::insert(const Edge& edge) {
     heap.push_back(edge);
-    heapifyUp(heap.size() - 1);
+    siftUp(size() - 1);
 }
-Edge minHeap::extractMin() {
-    if (heap.size() == 0) {
-        throw std::runtime_error("MinHeap is empty");
-    }
-    if (heap.size() == 1) {
-        Edge temp = heap.front();
-        heap.pop_back();
-        return temp;
-    }
-    Edge save = heap[0];
-    heap[0] = heap.back();
+
+Edge MinHeap::extractMin() {
+    if (empty()) throw std::out_of_range("Cannot extract from an empty heap");
+
+    Edge smallest = heap.front();
+    heap.front() = heap.back();
     heap.pop_back();
-    heapifyDown(0);
-    return save;
+    if (!empty()) siftDown(0);
+    return smallest;
 }

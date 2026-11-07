@@ -1,14 +1,15 @@
 #pragma once
-#include <vector>
 
+#include <vector>
 class UnionFind {
+public:
+    explicit UnionFind(int elementCount);
+
+    int find(int element);
+    bool unite(int first, int second);
+    bool connected(int first, int second);
+
 private:
     std::vector<int> parent;
     std::vector<int> rank;
-public:
-    explicit UnionFind(int numElements);
-    int find(int element);
-    bool unite(int first, int second);
-    bool unit(int first, int second) { return unite(first, second); }
-    bool connected(int first, int second) { return find(first) == find(second); }
 };
