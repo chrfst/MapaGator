@@ -18,7 +18,7 @@ int UnionFind::find(int element) {
         throw std::out_of_range("UnionFind element is out of range"); //bound check
     }
 
-    .
+    
         if (parent[element] != element) {
             parent[element] = find(parent[element]);
         }
