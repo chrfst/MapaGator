@@ -1,11 +1,12 @@
 #pragma once
+
 #include "Graph.h"
 #include <vector>
 
 struct MSTResult {
-    std::vector<Edge> mstEdges;
+    std::vector<Edge> edges;
     double totalCost = 0.0;
+    double totalLengthMeters = 0.0;
     int components = 0;
-    double runTimeMs = 0.0; 
-    //Core algorithm time 
+    double runtimeMs = 0.0;
 };

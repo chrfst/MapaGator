@@ -2,5 +2,5 @@
 #include "Graph.h"
 #include "MSTResult.h"
 struct Kruskal {
-    static MSTResult kruskal(const Graph& graph);
+    static MSTResult computeMST(const Graph& graph);
 };

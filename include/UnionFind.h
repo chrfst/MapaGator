@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+//Disjoint set for finding cycles in Kruskal's algorithm
 class UnionFind {
 public:
     explicit UnionFind(int elementCount);
