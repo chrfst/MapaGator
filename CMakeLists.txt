@@ -17,7 +17,7 @@ add_library(mapagator_core
     src/Kruskal.cpp
     src/CostScenario.cpp
     src/Analysis.cpp
-    src/MapRenderer.cpp
+    src/MapRender.cpp
 )
 target_include_directories(mapagator_core PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
