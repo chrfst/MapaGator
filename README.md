@@ -1,6 +1,6 @@
 # MapaGator
 
-MapaGator is our COP 3530 group project. We use road data from OpenStreetMap to compare **Prim's** and **Kruskal's** algorithms on the same network. Intersections are vertices, roads are weighted edges, and the goal is to connect the network at the lowest total cost. There is also an SFML dashboard for exploring the map and a command-line program for quick runs and benchmarks.
+MapaGator is our COP 3530 group project for group 112. We use road data from OpenStreetMap to compare **Prim's** and **Kruskal's** algorithms on the same network. Intersections are vertices, roads are weighted edges, and the goal is to connect the network at the lowest total cost. There is also an SFML dashboard for exploring the map and a command-line program for quick runs and benchmarks.
 
 **You can build and test this project without downloading Florida road data or installing SFML.** Start with the included sample graph to confirm the C++ build works, then set up the optional map viewer and Gainesville dataset.
 
