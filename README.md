@@ -283,8 +283,3 @@ If CMake is allowed to download Catch2, the first configuration needs internet. 
 - Multiple anchors are connected through a temporary zero-cost virtual vertex. Synthetic anchor edges are removed from the physical output.
 - Benchmarks measure the algorithm running on the machine and graph used; results will differ across computers.
 
-## Git and submission
-
-Clone the existing group repository rather than starting a new history, and copy the updated source files into the clone. Do not copy `.git` from another folder or commit `build-mingw/`, `.exe` files, PBF downloads, or large generated graph files. If upgrading from the old flat layout, remove the **superseded** root-level `.cpp`, `.h`, and preprocessing files after verifying they are present in `apps/`, `src/`, `include/`, and `scripts/`.
-
-A teammate or grader should be able to run the sample program and tests using only a C++17 compiler, CMake, a build tool, and Catch2 (which CMake can fetch). SFML and Florida road data are separate steps for the interactive demonstration.
