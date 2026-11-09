@@ -1,10 +1,28 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Ignored default folder with query files
-/queries/
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
-# Editor-based HTTP Client requests
-/httpRequests/
+# Local builds and editor files
+build/
+build-*/
+.vs/
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Downloaded regional data and generated outputs
+*.osm.pbf
+data/graph_data.txt
+data/vertices.txt
+data/*.svg
+data/*_mst.txt
+output/
+*.exe
+*.dll
+*.obj
+*.o
+
+# Keep provided examples in git
+!data/sample_graph.txt
+!data/sample_vertices.txt
