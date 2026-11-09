@@ -83,3 +83,13 @@ MSTResult analyze(const Graph& input, bool usePrim,
     }
     return result;
 }
+
+// Convert the total physical road length into miles for reporting.
+double originalMileage(const Graph& graph) {
+    double meters = 0.0;
+    for (const Edge& road : graph.getEdges()) {
+        if (road.source != road.destination) meters += road.length;
+    }
+    return meters / METERS_PER_MILE;
+}
+
